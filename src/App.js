@@ -1,22 +1,29 @@
-// App.js
-import React from 'react';
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="text-center p-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-4xl font-bold text-blue-500 mb-4">Hello, Tailwind CSS!</h1>
-        <p className="text-gray-700 text-lg">
-          Your React app is now styled with Tailwind CSS.
-        </p>
-        <p className ="text-green-400">
-          This is a custom color from your Tailwind configuration.
-        </p>
-        <p className='text-yellow-400'>
-          This is another custom color from your Tailwind configuration.
-        </p>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login onLogin={setIsLoggedIn} />} />
+        <Route
+          path="/dashboard"
+          element={
+            isLoggedIn ? (
+              <Dashboard />
+            ) : (
+              <div className="min-h-screen flex items-center justify-center bg-black text-white text-xl font-bold">
+                Access Denied, punk.
+              </div>
+            )
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
