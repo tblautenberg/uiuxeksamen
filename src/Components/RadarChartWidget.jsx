@@ -10,7 +10,7 @@ import {
 
 const RadarChartWidget = ({ title, data, isDarkMode }) => {
   const strokeColor = isDarkMode ? '#ccc' : '#333';
-  const bgColor = isDarkMode ? 'bg-gray-800' : 'bg-white/10';
+  const bgColor = isDarkMode ? 'bg-gray-800' : 'bg-gray-100';
   const textColor = isDarkMode ? 'text-white' : 'text-black';
 
   return (

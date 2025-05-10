@@ -100,22 +100,38 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
             {/* Conditional rendering for Line Chart */}
             {showLineChart && (
-              <LineChartWidget title="📊 Pigs total weight" data={sampleData} dataKeyX="name" dataKeyY="value" />
+              <LineChartWidget 
+                title="📊 Pigs total weight" 
+                data={sampleData} 
+                dataKeyX="name" 
+                dataKeyY="value" 
+                isDarkMode={isDarkMode} // Pass isDarkMode to LineChartWidget
+              />
             )}
 
             {/* Conditional rendering for Pie Chart */}
             {showPieChart && (
-              <PieChartWidget title="📈 KG food eaten pr/day" data={sampleData} dataKeyX="name" dataKeyY="value" />
+              <PieChartWidget 
+                title="📈 KG food eaten pr/day" 
+                data={sampleData} 
+                dataKeyX="name" 
+                dataKeyY="value" 
+                isDarkMode={isDarkMode} // Pass isDarkMode to PieChartWidget
+              />
             )}
+
+            {/* Conditional rendering for Area Chart */}
             {showAreaChart && (
               <AreaChartWidget
-                title="🌿 Sales Growth"
+                title="📉 Area chart test"
                 data={sampleData}
                 dataKeyX="name"
                 dataKeyY="value"
                 isDarkMode={isDarkMode}
               />
             )}
+
+            {/* Conditional rendering for Bar Chart */}
             {showBarChart && (
               <BarChartWidget
                 title="📉 Sales Distribution"
@@ -125,6 +141,8 @@ const Dashboard = () => {
                 isDarkMode={isDarkMode}
               />
             )}
+
+            {/* Conditional rendering for Composed Chart */}
             {showComposedChart && (
               <ComposedChartWidget
                 title="📊 Monthly Comparison"
@@ -134,6 +152,7 @@ const Dashboard = () => {
                 isDarkMode={isDarkMode}
               />
             )}
+
             {/* Conditional rendering for Radar Chart */}
             {showRadarChart && (
               <RadarChartWidget
